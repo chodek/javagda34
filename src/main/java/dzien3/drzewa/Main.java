@@ -14,5 +14,6 @@ public class Main {
         myBST.add(9);
 
         System.out.println(myBST.preOrder());
+        System.out.println(myBST.countLeaves());
     }
 }

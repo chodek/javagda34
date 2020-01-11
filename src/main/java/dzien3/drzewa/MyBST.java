@@ -28,7 +28,7 @@ public class MyBST {
         return current;
     }
 
-    public List<Node> preOrder(){
+    public List<Node> preOrder() {
         List<Node> listaWezlow = new ArrayList<>();
         recursivePreOrder(root, listaWezlow);
         return listaWezlow;
@@ -36,13 +36,34 @@ public class MyBST {
 
     private void recursivePreOrder(Node current, List<Node> alreadyVisited) {
 
-        alreadyVisited.add(current); // Node
         if (current.left != null) {
             recursivePreOrder(current.left, alreadyVisited); // Left sub-tree
         }
+
+        alreadyVisited.add(current); // Node
+
         if (current.right != null) {
             recursivePreOrder(current.right, alreadyVisited); // Right sub-tree
         }
+
+    }
+
+    public int countLeaves() {
+        List<Node> listaWezlow = new ArrayList<>();
+        countLeafesPostOrder(root, listaWezlow);
+        return listaWezlow.size();
+    }
+
+    private void countLeafesPostOrder(Node current, List<Node> alreadyVisited) {
+
+        if (current.left != null) {
+            countLeafesPostOrder(current.left, alreadyVisited); // Left sub-tree
+        }
+
+        if (current.right != null) {
+            countLeafesPostOrder(current.right, alreadyVisited); // Right sub-tree
+        }
+        if (current.right == null && current.left == null) alreadyVisited.add(current);
 
     }
 }
