@@ -1,29 +1,35 @@
 package dzien3.stosy;
 
+import java.util.*;
+
 public class Main {
     public static void main(String[] args) {
+        System.out.println(balancedParens("(())"));
+        System.out.println(balancedParens("())))))"));
+    }
 
-        MyStack mojStosik = new MyStack();
 
-        mojStosik.push(50);
-        mojStosik.push(50);
-        mojStosik.push(50);
-        mojStosik.push(50);
-        mojStosik.push(50);
-        mojStosik.push(50);
-        mojStosik.push(50);
-        mojStosik.push(50);
-        mojStosik.push(50);
-        mojStosik.push(50);
-        mojStosik.push(50);
-        mojStosik.push(50);
-        mojStosik.push(50);
-        mojStosik.push(50);
-        mojStosik.push(50);
+    public static boolean balancedParens(String input) {
+        boolean balanced = false;
+        Deque<Character> stosNawiasow = new ArrayDeque<>();
 
-        mojStosik.pop();
-        mojStosik.pop();
-        mojStosik.pop();
-        mojStosik.pop();
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) == '(') {
+                stosNawiasow.push('(');
+            } else {
+                try {
+                    stosNawiasow.pop();
+                } catch (NoSuchElementException e) {
+                    return balanced;
+                }
+
+            }
+        }
+
+        if (stosNawiasow.isEmpty()) {
+            balanced = true;
+        }
+
+        return balanced;
     }
 }
