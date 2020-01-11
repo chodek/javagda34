@@ -14,11 +14,28 @@ public class Main {
         Deque<Character> stosNawiasow = new ArrayDeque<>();
 
         for (int i = 0; i < input.length(); i++) {
-            if (input.charAt(i) == '(') {
-                stosNawiasow.push('(');
+            if (input.charAt(i) == '(' || input.charAt(i) == '{' || input.charAt(i) == '[') {
+                stosNawiasow.push(input.charAt(i));
             } else {
                 try {
-                    stosNawiasow.pop();
+                    char zdjety = stosNawiasow.pop();
+                    if (input.charAt(i) == '}') {
+                        if (zdjety != '{') {
+                            return balanced;
+                        }
+                    }
+                    if (input.charAt(i) == ']') {
+                        if (zdjety != '[') {
+                            return balanced;
+                        }
+                    }
+                    if (input.charAt(i) == ')') {
+                        if (zdjety != '[') {
+                            return balanced;
+                        }
+                    }
+
+
                 } catch (NoSuchElementException e) {
                     return balanced;
                 }
