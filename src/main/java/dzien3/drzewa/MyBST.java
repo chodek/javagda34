@@ -36,12 +36,12 @@ public class MyBST {
 
     private void recursivePreOrder(Node current, List<Node> alreadyVisited) {
 
-        alreadyVisited.add(current); // 1.
+        alreadyVisited.add(current); // Node
         if (current.left != null) {
-            recursivePreOrder(current.left, alreadyVisited); // 2.
+            recursivePreOrder(current.left, alreadyVisited); // Left sub-tree
         }
         if (current.right != null) {
-            recursivePreOrder(current.right, alreadyVisited); // 3.
+            recursivePreOrder(current.right, alreadyVisited); // Right sub-tree
         }
 
     }
