@@ -1,7 +1,7 @@
 package dzien3.stosy;
 
 
-public class MyStack {
+public class MyStack <T>{
     int[] stos;
     int wierzcholekStosu;
 
